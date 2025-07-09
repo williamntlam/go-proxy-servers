@@ -14,4 +14,20 @@ func main() {
 
 	flag.Parse()
 
+	fmt.Printf("Starting proxy on port: %s\n", *port)
+
+	if *configFile != "" {
+
+		fmt.Printf("Config file at: %s\n", *configFile)
+
+	} else {
+		log.Println("No config file found.")
+	}
+
+	if *verbose {
+		log.Println("Verbose logging enabled.")
+	} else {
+		log.Println("Verbose logging disabled.")
+	}
+
 }
