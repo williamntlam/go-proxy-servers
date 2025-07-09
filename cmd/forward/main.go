@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"http"
+	"net/http"
 )
 
 func main() {
@@ -33,7 +33,12 @@ func main() {
 
 	var server *http.Server = &http.Server{
 		Addr: ":" + *port,
-		Handler: &ProxyHandler;
+		Handler: &ProxyHandler{},
+	}
+
+	log.Printf("Starting proxy server on port %s", *port)
+	if err := server.ListenAndServe(); err != nil {
+		log.Fatal(err)
 	}
 
 }
