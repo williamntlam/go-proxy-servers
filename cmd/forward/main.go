@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"http"
 )
 
 func main() {
@@ -28,6 +29,11 @@ func main() {
 		log.Println("Verbose logging enabled.")
 	} else {
 		log.Println("Verbose logging disabled.")
+	}
+
+	var server *http.Server = &http.Server{
+		Addr: ":" + *port,
+		Handler: &ProxyHandler;
 	}
 
 }
